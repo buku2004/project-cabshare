@@ -2,51 +2,74 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <header className="bg-green-900 text-white">
-      <div className="container mx-auto flex items-center justify-between py-4 px-6">
-        {/* Logo Section */}
-        <div className="bg-green-600 p-2 rounded">
-          <img
-            src="C:\CabShare\cabshare-nitr\public\WhatsApp Image 2024-12-07 at 00.06.25_e85d9014.jpg"
-            alt="CabShare NITR Logo"
-            className="h-12 w-auto"
-          />
-        </div>
-
-        {/* Navigation Links */}
-        <nav>
-          <ul className="flex space-x-6 font-semibold">
-            <li>
-              <a href="#home" className="hover:text-green-300">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#about" className="hover:text-green-300">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#services" className="hover:text-green-300">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:text-green-300">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        {/* Email Icon */}
-        <div>
-          <a href="#email" className="text-green-300 hover:text-white text-xl">
-            <i className="fas fa-envelope"></i>
+    <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white shadow-md z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0 mt-12">
+          <a href="/">
+            <img
+              src="./logo2.png"
+              alt="CabShare-NITR Logo"
+              className="h-10 w-auto"
+              style={{ height: "150px", width: "auto" }}
+            />
           </a>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="hidden md:flex space-x-4">
+            <a
+              href="#"
+              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Home
+            </a>
+            <a
+              href="#about"
+              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium"
+            >
+              About
+            </a>
+            <a
+              href="#features"
+              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Features
+            </a>
+            <a
+              href="#contact"
+              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Contact
+            </a>
+          </div>
+
+          {/* Mobile Menu */}
+          <div className="md:hidden">
+            <button
+              className="text-gray-300 hover:text-white focus:outline-none"
+              aria-label="Open Menu"
+            >
+              <svg
+                className="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
-    </header>
+    </nav>
   )
 }
 
