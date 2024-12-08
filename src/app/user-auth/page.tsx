@@ -1,10 +1,10 @@
 import React from 'react'
-import Content from './components/Content'
+import UserAuth from './UserAuth'
 
 const page = () => {
   return (
     <div>
-      <Content/>
+        <UserAuth/>
     </div>
   )
 }
