@@ -2,10 +2,17 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    <div className="relative bg-cover bg-center h-screen" style={{ backgroundImage: "url('https://images.pexels.com/photos/2399254/pexels-photo-2399254.jpeg?cs=srgb&dl=photo-of-yellow-taxi-parked-near-sidewalk-2399254.jpg&fm=jpg')" }}>
+    <div
+      className="relative bg-cover bg-center h-screen"
+      style={{
+        backgroundImage: `url('./Hero_image.png')`, 
+        height: "100vh",
+        width: "100%",
+      }}
+    >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      
+
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center h-full text-white">
         <div className="max-w-2xl px-4">

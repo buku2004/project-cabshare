@@ -6,13 +6,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0 mt-12">
+          <div className="flex-shrink-0 mt-20">
           <a href="#">
             <img
-              src="./logo2.png"
+              src="./Logo_final.png"
               alt="CabShare-NITR Logo"
               className="h-10 w-auto"
-              style={{ height: "150px", width: "auto" }}
+              style={{ height: "120px", width: "auto" }}
             />
           </a>
           </div>
