@@ -1,45 +1,45 @@
-import React from 'react'
+import React from 'react';
 
 const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white shadow-md z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-center h-24 space-x-8">
           {/* Logo */}
-          <div className="flex-shrink-0 mt-20">
-          <a href="#">
-            <img
-              src="./Logo_final.png"
-              alt="CabShare-NITR Logo"
-              className="h-10 w-auto"
-              style={{ height: "120px", width: "auto" }}
-            />
-          </a>
+          <div className="mt-20 flex-shrink-0">
+            <a href="#">
+              <img
+                src="./Logo_final.png"
+                alt="CabShare-NITR Logo"
+                className="h-20 w-auto"
+                style={{ height: '120px', width: 'auto' }}
+              />
+            </a>
           </div>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex space-x-4">
+          <div className="hidden md:flex text-center space-x-8">
             <a
               href="#"
-              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium"
+              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-lg font-medium"
             >
               Home
             </a>
             <a
               href="#about"
-              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium"
+              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-lg font-medium"
             >
               About
             </a>
             <a
               href="#features"
-              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium"
+              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-lg font-medium"
             >
               Features
             </a>
             <a
               href="#contact"
-              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-sm font-medium"
+              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-lg font-medium"
             >
               Contact
             </a>
@@ -70,7 +70,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
