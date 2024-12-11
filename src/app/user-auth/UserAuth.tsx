@@ -4,7 +4,6 @@ import Link from 'next/link';
 const UserAuth = () => {
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-8">
-      {/* Left Image Section */}
       <div className="flex-shrink-0">
         <img
           src="./userauth.webp"
@@ -13,7 +12,6 @@ const UserAuth = () => {
         />
       </div>
 
-      {/* Right Text Section */}
       <div className="flex-grow">
         <h3 className="text-2xl font-semibold text-green-500">User Authentication</h3>
         <p className="text-gray-700 mt-4 text-lg">

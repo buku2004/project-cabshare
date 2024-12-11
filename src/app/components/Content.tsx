@@ -38,7 +38,7 @@ const Content = () => {
             alt="Create Ride Listings"
             className="w-full h-48 object-cover rounded-md"
           />
-          <h3 className="text-2xl font-semibold mt-4 group-hover:text-green-500 group-hover:scale-110 transition-transform duration-300"><Link href="/listings" >
+          <h3 className="text-2xl font-semibold mt-4 group-hover:text-green-500 group-hover:scale-110 transition-transform duration-300"><Link href="/add-listings" >
             Create Ride Listings
           </Link></h3>
           <p className="text-gray-300 mt-2 text-xl">
@@ -54,9 +54,9 @@ const Content = () => {
             alt="Show All Listings"
             className="w-full h-48 object-cover rounded-md"
           />
-          <h3 className="text-2xl font-semibold mt-4 group-hover:text-green-500 group-hover:scale-110 transition-transform duration-300">
+          <h3 className="text-2xl font-semibold mt-4 group-hover:text-green-500 group-hover:scale-110 transition-transform duration-300"><Link href="/all-listings">
             Show All Listings
-          </h3>
+            </Link></h3>
           <p className="text-gray-300 mt-2 text-xl">
             Explore all the ride listings available for all days, organized by
             departure times and destinations. Easily connect with fellow
