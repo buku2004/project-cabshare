@@ -19,3 +19,7 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* .bg-cover{
+  background-image: url('./footer.jpg');
+} */
+
