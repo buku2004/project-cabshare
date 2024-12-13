@@ -2,17 +2,17 @@ import React from 'react'
 
 function About() {
   return (
-    <div className="bg-gray-900 text-white h-screen flex justify-center items-center">
-      <div className="grid md:grid-cols-2 gap-8 w-11/12 max-w-5xl bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+    <div className="bg-[#2E2E2E] text-black h-screen flex justify-center items-center">
+      <div className="grid md:grid-cols-2 gap-8 w-11/12 max-w-5xl bg-[#FFBA08] rounded-lg overflow-hidden shadow-lg">
         {/* Left Section - Text */}
         <div className="p-8">
-          <h2 className="text-xs uppercase font-bold tracking-widest text-gray-400 mb-2">
+          <h2 className="text-xs uppercase font-bold tracking-widest text-teal-800 mb-2">
             Ride Together, Save Together
           </h2>
           <h1 className="text-4xl font-extrabold mb-4">
             Join the NIT Rourkela cab-sharing community
           </h1>
-          <p className="text-gray-300 mb-4 leading-relaxed">
+          <p className="text-[#2E2E2E] mb-4 leading-relaxed">
             CabShare-NITR is a modern cab-sharing platform designed exclusively
             for the vibrant community of NIT Rourkela. Our user-friendly
             interface allows students to easily share rides, saving money while
@@ -24,7 +24,7 @@ function About() {
           </p>
           <a
             href="#"
-            className="text-teal-400 underline hover:text-teal-300 font-medium"
+            className="text-teal-800 underline hover:text-teal-500 font-medium"
           >
             Get in touch
           </a>
