@@ -13,7 +13,6 @@ const page = () => {
       <Hero/>
       <About/>
       <Content/>
-      
       <Feedback/>
       <Footer/>
     </div>
