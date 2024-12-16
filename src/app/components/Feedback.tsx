@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import "ol/ol.css";
@@ -49,10 +48,10 @@ const FeedbackForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md"
+      className="bg-[#A3A3A3] p-8 rounded-lg shadow-md w-full max-w"
     >
-      <h2 className="text-2xl font-bold mb-4"> We are here to help you ride share!</h2>
-      <p className="text-gray-400 mb-6">Get in touch by giving your valuable feedback</p>
+      <h2 className="text-4xl font-bold mb-4"> We are here to help you ride share!</h2>
+      <p className="text-white mb-6">Get in touch by giving your valuable feedback</p>
 
       <label className="block mb-2 text-sm font-medium">
         Name *
@@ -115,7 +114,7 @@ const FeedbackForm = () => {
 
       <button
         type="submit"
-        className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors"
+        className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors"
       >
         Submit
       </button>
@@ -168,7 +167,7 @@ const FeedbackMap = () => {
     return () => map.setTarget(undefined);
   }, []);
 
-  return <div ref={mapRef} className="w-full h-full rounded-lg" style={{ height: "400px" }} />;
+  return <div ref={mapRef} className="w-full h-full rounded-lg" />;
 };
 
 const Feedback = () => {
