@@ -4,6 +4,7 @@ import Content from './components/Content'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import About from './components/About'
+import Feedback from './components/Feedback'
 
 const page = () => {
   return (
@@ -12,7 +13,9 @@ const page = () => {
       <Hero/>
       <About/>
       <Content/>
-      <Footer/> 
+      
+      <Feedback/>
+      <Footer/>
     </div>
   )
 }
