@@ -1,10 +1,10 @@
 import React from 'react'
-import Showall from './Showall'
+import CreateList from './CreateList'
 
 const page = () => {
   return (
     <div>
-    <Showall/>
+        <CreateList/>
     </div>
   )
 }
