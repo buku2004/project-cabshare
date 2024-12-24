@@ -1,7 +1,6 @@
-// import React from "react";
 "use client";
 import React, { useState } from "react";
-import { db , app1 } from "./firebase"; // Adjust the path
+import { db , app1 } from "./firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 const CreateList = () => {
