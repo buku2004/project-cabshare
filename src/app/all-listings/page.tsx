@@ -1,10 +1,10 @@
 import React from 'react'
-import Showall from './Showall'
+import ShowAllListings from './ShowAllListings'
 
 const page = () => {
   return (
     <div>
-    <Showall/>
+    <ShowAllListings/>
     </div>
   )
 }

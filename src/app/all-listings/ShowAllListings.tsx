@@ -15,7 +15,7 @@ interface Listing {
   cost: string;
 }
 
-const ShowListings = () => {
+const ShowAllListings = () => {
   const [listings, setListings] = useState<Listing[]>([]); // Using the Listing type
 
   // Fetch listings from Firestore when the component mounts
@@ -67,5 +67,5 @@ const ShowListings = () => {
   );
 };
 
-export default ShowListings;
+export default ShowAllListings;
 
