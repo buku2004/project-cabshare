@@ -19,8 +19,8 @@ const ShowAllListings = () => {
   const [listings, setListings] = useState<Listing[]>([]);
   const [filteredListings, setFilteredListings] = useState<Listing[]>([]);
   const [filters, setFilters] = useState({
-    date: "",
-    time: "",
+    startTime: "",
+    endTime: "",
     destination: "",
   });
   const [selectedDate, setSelectedDate] = useState<string>("");
@@ -43,22 +43,49 @@ const ShowAllListings = () => {
     fetchListings();
   }, []);
 
+  const handleDateChange = (date: string) => {
+    setSelectedDate(date);
+  };
+
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFilters({ ...filters, [name]: value });
   };
 
+  const clearTimeFilters = () => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      startTime: "",
+      endTime: "",
+    }));
+  };
+
+  // Helper function to check if a time is within a range
+  const isTimeInRange = (time: string, start: string, end: string): boolean => {
+    if (!start || !end) return true;
+    const [tHours, tMinutes] = time.split(":").map(Number);
+    const [sHours, sMinutes] = start.split(":").map(Number);
+    const [eHours, eMinutes] = end.split(":").map(Number);
+
+    const timeMinutes = tHours * 60 + tMinutes;
+    const startMinutes = sHours * 60 + sMinutes;
+    const endMinutes = eHours * 60 + eMinutes;
+
+    return timeMinutes >= startMinutes && timeMinutes <= endMinutes;
+  };
+
   useEffect(() => {
     const applyFilters = () => {
       const filtered = listings.filter((listing) => {
+        const timeMatch = isTimeInRange(listing.time, filters.startTime, filters.endTime);
+
         return (
-          (!filters.date || listing.date === filters.date) &&
-          (!filters.time || listing.time === filters.time) &&
+          (!selectedDate || listing.date === selectedDate) &&
           (!filters.destination ||
             listing.destination
               .toLowerCase()
               .includes(filters.destination.toLowerCase())) &&
-          (!selectedDate || listing.date === selectedDate)
+          timeMatch
         );
       });
       setFilteredListings(filtered);
@@ -81,7 +108,7 @@ const ShowAllListings = () => {
   const nextTwoWeeks = generateNextTwoWeeks();
 
   return (
-    <div className="bg-gray-900 min-h-screen text-white mt-[6rem]">
+    <div className="bg-gray-900 min-h-screen text-white">
       <header className="bg-yellow-500 px-6 py-4 flex justify-between items-center">
         <h1 className="text-2xl font-bold">Cab Share Listings</h1>
         <p className="italic">Ride Together, Save More</p>
@@ -92,7 +119,7 @@ const ShowAllListings = () => {
           {nextTwoWeeks.map((date) => (
             <button
               key={date}
-              onClick={() => setSelectedDate(date)}
+              onClick={() => handleDateChange(date)}
               className={`px-4 py-2 rounded-md font-semibold transition-colors duration-500 ${
                 selectedDate === date
                   ? "bg-green-500 text-white"
@@ -120,25 +147,46 @@ const ShowAllListings = () => {
                 <input
                   type="date"
                   id="date"
-                  name="date"
-                  value={filters.date}
+                  value={selectedDate}
+                  onChange={(e) => handleDateChange(e.target.value)}
+                  className="w-full px-3 py-2 rounded-md bg-gray-700 border border-gray-600"
+                />
+              </div>
+
+              <h3 className="text-sm font-semibold">Time Range</h3>
+              <div>
+                <label htmlFor="startTime" className="block text-sm mb-1">
+                  Start Time:
+                </label>
+                <input
+                  type="time"
+                  id="startTime"
+                  name="startTime"
+                  value={filters.startTime}
                   onChange={handleFilterChange}
                   className="w-full px-3 py-2 rounded-md bg-gray-700 border border-gray-600"
                 />
               </div>
               <div>
-                <label htmlFor="time" className="block text-sm mb-1">
-                  Time:
+                <label htmlFor="endTime" className="block text-sm mb-1">
+                  End Time:
                 </label>
                 <input
                   type="time"
-                  id="time"
-                  name="time"
-                  value={filters.time}
+                  id="endTime"
+                  name="endTime"
+                  value={filters.endTime}
                   onChange={handleFilterChange}
                   className="w-full px-3 py-2 rounded-md bg-gray-700 border border-gray-600"
                 />
               </div>
+              <button
+                onClick={clearTimeFilters}
+                className="px-3 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 mt-2"
+              >
+                Clear Time Range
+              </button>
+
               <div>
                 <label htmlFor="destination" className="block text-sm mb-1">
                   Destination:
@@ -181,13 +229,9 @@ const ShowAllListings = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
- 
 };
 
 export default ShowAllListings;
-
-
-
