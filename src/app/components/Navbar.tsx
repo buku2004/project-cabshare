@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useUser, SignUpButton, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 const Navbar = () => {
   const { isSignedIn } = useUser(); // Check user sign-in status
@@ -19,30 +20,30 @@ const Navbar = () => {
 
           {/* Navigation Links */}
           <div className="hidden md:flex text-center space-x-8">
-            <a
-              href="#"
+            <Link
+              href="/"
               className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-lg font-bold"
             >
               Home
-            </a>
-            <a
-              href="#about"
+            </Link>
+            <Link
+              href="/"
               className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-lg font-bold"
             >
               About
-            </a>
-            <a
-              href="#features"
+            </Link>
+            <Link
+              href="/"
               className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-lg font-bold"
             >
               Features
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              href="/"
               className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-lg font-bold"
             >
               Contact
-            </a>
+            </Link>
           </div>
 
           {/* Sign Up / Account Dropdown */}
