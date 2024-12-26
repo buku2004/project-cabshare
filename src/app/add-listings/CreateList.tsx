@@ -52,7 +52,7 @@ const CreateList = () => {
   };
 
   return (
-    <div className="bg-gray-50 p-6 md:p-12 flex flex-col md:flex-row items-center md:items-start">
+    <div className="bg-gray-50 mt-[6rem] p-6 md:p-12 flex flex-col md:flex-row items-center md:items-start">
       <div className="w-full md:w-1/3 mb-6 md:mb-0">
         <img
           src="./addlisting.webp"

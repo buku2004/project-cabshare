@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Nunito } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const Nun = Nunito({
   subsets: ['latin'],
@@ -23,7 +25,9 @@ export default function RootLayout({
     <ClerkProvider>
     <html lang="en">
       <body className={Nun.className}>
+        <Navbar/>
         {children}
+        <Footer/>
       </body>
     </html>
     </ClerkProvider>
