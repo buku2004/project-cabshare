@@ -1,11 +1,47 @@
 "use client";
-import React, { useState } from "react";
-import { useUser, SignUpButton, UserButton } from "@clerk/nextjs";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { auth, googleProvider } from "../constants/firebase";
+import { signInWithPopup, signOut, User } from "firebase/auth";
+import { useRouter } from "next/navigation";
+import { FaUserCircle } from "react-icons/fa"; 
 
-const Navbar = () => {
-  const { isSignedIn } = useUser(); // Check user sign-in status
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdown visibility
+// Define type for user state (could be null or a User object)
+const Navbar: React.FC = () => {
+  const [user, setUser] = useState<User | null>(null); 
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
+  const router = useRouter();
+
+  // Check if the user is logged in
+  useEffect(() => {
+    const logout = auth.onAuthStateChanged((authUser: User | null) => {
+      setUser(authUser);
+    });
+
+    return () => logout(); 
+  }, []);
+
+  const handleGoogleLogin = async (): Promise<void> => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      console.log("User Info:", user);
+      setUser(user);
+      router.push("/");
+    } catch (error) {
+      console.error("Google Login Error:", error);
+    }
+  };
+
+  const handleSignOut = async (): Promise<void> => {
+    try {
+      await signOut(auth);
+      setUser(null); 
+      router.push("/");
+    } catch (error) {
+      console.error("Sign Out Error:", error);
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-[#2E2E2E] text-white shadow-md z-50">
@@ -46,67 +82,47 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Sign Up / Account Dropdown */}
-          {!isSignedIn ? (
-            <SignUpButton mode="modal">
-              <button className="bg-teal-500 hover:bg-teal-600 text-white font-bold px-4 py-2 rounded-md">
-                Sign In
-              </button>
-            </SignUpButton>
-          ) : (
-            // Dropdown Menu for Logged-In Users
+          {/* Sign Up or Profile Icon */}
+          {user ? (
             <div className="relative">
-              <UserButton
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center px-4 py-2 text-gray-300 hover:text-white focus:outline-none cursor-pointer"
+              {/* Profile Icon (Dropdown) */}
+              <button
+                className="text-gray-300 hover:text-teal-400 p-2"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                <span className="text-lg font-bold">Account</span>
-                <svg
-                  className="ml-2 h-5 w-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clipRule="evenodd"
+                {/* If user has a photoURL, use that image, else fallback to the default icon */}
+                {user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt="User Profile"
+                    className="w-8 h-8 rounded-full"
                   />
-                </svg>
-              </UserButton>
+                ) : (
+                  <FaUserCircle size={30} />
+                )}
+              </button>
 
-              {isDropdownOpen && (
-                <div
-                  className="absolute right-0 mt-2 w-48 origin-top-right rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="menu-button"
-                >
-                  <div className="py-1" role="none">
-                    <a
-                      href="#profile"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      role="menuitem"
-                    >
-                      Profile
-                    </a>
-                    <button
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      role="menuitem"
-                    >
-                      Dark Mode
-                    </button>
-                    <button
-                      onClick={() => setIsDropdownOpen(false)}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      role="menuitem"
-                    >
-                      Close Menu
-                    </button>
-                  </div>
+              {/* Dropdown Menu */}
+              {dropdownOpen && (
+                <div className="absolute bg-white text-black rounded shadow-md">
+                  <Link href="/" className="block px-4 py-2">
+                    Profile
+                  </Link>
+                  <button
+                    onClick={handleSignOut}
+                    className="block px-4 py-2 text-red-500 w-[4rem] border-t-2"
+                  >
+                    Logout
+                  </button>
                 </div>
               )}
+            </div>
+          ) : (
+            <div
+              className="bg-teal-400 p-2 rounded hover:opacity-90 cursor-pointer"
+              onClick={handleGoogleLogin}
+            >
+              Sign Up
             </div>
           )}
 

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Nunito } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -22,7 +21,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
     <html lang="en">
       <body className={Nun.className}>
         <Navbar/>
@@ -30,6 +28,5 @@ export default function RootLayout({
         <Footer/>
       </body>
     </html>
-    </ClerkProvider>
   );
 }
