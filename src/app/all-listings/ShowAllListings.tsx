@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { app, db } from "./firebase"; // Adjust the path
+import { app, db } from "../constants/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import Footer from "../components/Footer";
 

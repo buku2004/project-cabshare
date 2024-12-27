@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { db , app1 } from "./firebase";
+import { db , app1 } from "../constants/firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 const CreateList = () => {
