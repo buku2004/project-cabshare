@@ -1,17 +1,7 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import "ol/ol.css";
-import { Map, View } from "ol";
+import React, { useState } from "react";
 
-import TileLayer from "ol/layer/Tile";
-import OSM from "ol/source/OSM";
-import { fromLonLat } from "ol/proj"; // Import projection utility
-import VectorLayer from "ol/layer/Vector";
-import VectorSource from "ol/source/Vector";
-import Feature from "ol/Feature";
-import Point from "ol/geom/Point";
-import Style from "ol/style/Style";
-import Icon from "ol/style/Icon";
+const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({
@@ -122,65 +112,21 @@ const FeedbackForm = () => {
   );
 };
 
-const FeedbackMap = () => {
-  const mapRef = useRef(null);
-
-  useEffect(() => {
-    const coordinates = fromLonLat([84.9013, 22.2531]); // [Longitude, Latitude]
-
-    const marker = new Feature({
-      geometry: new Point(coordinates),
-    });
-
-    marker.setStyle(
-      new Style({
-        image: new Icon({
-          anchor: [0.5, 1],
-          src: "https://openlayers.org/en/latest/examples/data/icon.png",
-        }),
-      })
-    );
-
-    const markerSource = new VectorSource({
-      features: [marker],
-    });
-
-    const markerLayer = new VectorLayer({
-      source: markerSource,
-    });
-    if (!mapRef.current) return;
-
-    const map = new Map({
-      target : mapRef.current,
-      layers : [
-        new TileLayer({
-          source: new OSM(),
-        }),
-        markerLayer,
-      ],
-      view: new View({
-        center: coordinates,
-        zoom: 15,
-      }),
-    });
-
-    return () => map.setTarget(undefined);
-  }, []);
-
-  return <div ref={mapRef} className="w-full h-full rounded-lg" />;
-};
-
 const Feedback = () => {
   return (
-    <div className="flex flex-col lg:flex-row gap-8 p-8 bg-gray-900 text-white min-h-screen">
+    <div className="flex flex-col lg:flex-row gap-8 p-8 bg-gray-900 text-white ">
       {/* Left: Feedback Form */}
-      <div className="flex-1 flex justify-center">
+      <div className="flex-1 flex justify-center h-[37.5rem]">
         <FeedbackForm />
       </div>
 
-      {/* Right: Map */}
       <div className="flex-1 flex justify-center">
-        <FeedbackMap />
+      <iframe width="650" height="600" 
+      style = {{border: 0}}
+      loading="lazy" 
+      allowFullScreen
+      src={`https://www.google.com/maps/embed/v1/place?q=place_id:ChIJw2HVu3IfIDoRWntq53BcqwA&key=${apiKey}`}>
+      </iframe>
       </div>
     </div>
   );
