@@ -96,7 +96,7 @@ const CreateList = () => {
                     type={input.type}
                     id={input.name}
                     name={input.name}
-                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-green-300"
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-green-300 text-black"
                     placeholder={input.placeholder}
 
                     value={formData[input.name as keyof typeof formData]}

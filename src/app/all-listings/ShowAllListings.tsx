@@ -206,12 +206,12 @@ const ShowAllListings = () => {
 
           {/* Listings Section */}
           <div className="flex-1">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredListings.length > 0 ? (
                 filteredListings.map((listing) => (
                   <div
                     key={listing.id}
-                    className="bg-gray-800 p-4 rounded-md shadow-md border border-gray-700 transition-transform duration-500 hover:bg-green-400 hover:scale-105"
+                    className="bg-gray-800 p-6 rounded-xl shadow-md border border-gray-700 hover:shadow-lg hover:shadow-green-300 transition-transform transform duration-300 hover:scale-105"
                   >
                     <h3 className="text-lg font-semibold">{listing.name}</h3>
                     <p>Phone: {listing.phone}</p>
