@@ -4,7 +4,8 @@ import { ADDLISTING_ROUTE, ALLLISTING_ROUTE } from "../constants/routes";
 
 const Content = () => {
   return (
-    <div className="bg-[#2E2E2E] text-white p-6 md:p-10 lg:px-[15rem]">
+    <div id="services" 
+      className="bg-[#2E2E2E] text-white p-6 md:p-10 lg:px-[15rem]">
       <div className="mb-6 text-center md:text-left">
         <div className="text-white inline-block rounded-md font-semibold text-sm uppercase">
           Smart Ride Sharing
