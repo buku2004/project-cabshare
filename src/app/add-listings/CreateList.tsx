@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { db , app1 } from "../constants/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { db } from "../constants/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 const CreateList = () => {
   const [showForm, setShowForm] = useState(false);
@@ -28,12 +28,11 @@ const CreateList = () => {
     e.preventDefault();
 
     try {
-      // Add the listing to Firestore
-      // await addDoc(collection(db, "listings"), formData);
-      const listingsCollectionRef = collection(db, "listings");
+      const docID = formData.destination;
+      const listingsCollectionRef = doc(db, "listings", docID);
 
       // Add the listing to Firestore
-      await addDoc(listingsCollectionRef, formData);
+      await setDoc(listingsCollectionRef, formData);
       alert("Listing submitted successfully!");
       setFormData({
         name: "",
@@ -47,7 +46,7 @@ const CreateList = () => {
       setShowForm(false);
     } catch (error) {
       console.error("Error adding document: ", error);
-      alert("Failed to submit the listing.");
+      alert(`Failed to submit feedback: ${error.message}`);
     }
   };
 
