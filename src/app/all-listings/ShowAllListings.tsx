@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { db } from "../constants/firebase";
+import { app, db } from "../constants/firebase";
 import { collection, getDocs } from "firebase/firestore";
+import Footer from "../components/Footer";
 
 interface Listing {
   id: string;
@@ -107,7 +108,7 @@ const ShowAllListings = () => {
   const nextTwoWeeks = generateNextTwoWeeks();
 
   return (
-    <div className="bg-gray-900 min-h-screen text-white mt-8">
+    <div className="bg-gray-900 min-h-screen text-white">
       <header className="bg-yellow-500 px-6 py-4 flex justify-between items-center">
         <h1 className="text-2xl font-bold">Cab Share Listings</h1>
         <p className="italic">Ride Together, Save More</p>
@@ -228,6 +229,7 @@ const ShowAllListings = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
