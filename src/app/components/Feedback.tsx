@@ -1,9 +1,14 @@
 "use client";
 import React, { useState } from "react";
+import { db } from "../constants/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
 const FeedbackForm = () => {
+  
+  const [showForm, setShowForm] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,10 +34,26 @@ const FeedbackForm = () => {
     }
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log("Form submitted with data:", formData);
-    alert("Form submitted successfully!");
+  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const docID = formData.name;
+      const feedbackDocRef = doc(db, "feedbacks", docID);
+      // Add the listing to Firestore
+      await setDoc(feedbackDocRef, formData);
+      alert("Listing submitted successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        consent: false,
+      });
+      setShowForm(false);
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      alert(`Failed to submit feedback: ${error.message}`);
+    }
   };
 
   return (

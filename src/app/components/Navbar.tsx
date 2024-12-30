@@ -6,7 +6,6 @@ import { signInWithPopup, signOut, User } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { FaUserCircle } from "react-icons/fa"; 
 
-// Define type for user state (could be null or a User object)
 const Navbar: React.FC = () => {
   const [user, setUser] = useState<User | null>(null); 
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
