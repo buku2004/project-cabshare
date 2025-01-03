@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../constants/firebase";
 import { collection, getDocs } from "firebase/firestore";
-import Footer from "../components/Footer";
+
 
 interface Listing {
   id: string;
@@ -229,7 +229,7 @@ const ShowAllListings = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      
     </div>
   );
 };
