@@ -1,10 +1,11 @@
 import React from "react";
 import Link from "next/link";
+import { ADDLISTING_ROUTE, ALLLISTING_ROUTE } from "../constants/routes";
 
 const Content = () => {
   return (
-    <div className="bg-[#2E2E2E] text-white p-6 md:p-10 lg:px-[15rem]">
-      {/* Smart Ride Sharing Title */}
+    <div id="services" 
+      className="bg-[#2E2E2E] text-white p-6 md:p-10 lg:px-[15rem]">
       <div className="mb-6 text-center md:text-left">
         <div className="text-white inline-block rounded-md font-semibold text-sm uppercase">
           Smart Ride Sharing
@@ -41,7 +42,7 @@ const Content = () => {
             className="w-full h-48 object-center rounded-md"
           />
           <h3 className="text-2xl font-semibold mt-4 group-hover:text-green-500 group-hover:scale-105 transition-transform duration-300">
-            <Link href="/add-listings">
+            <Link href={ADDLISTING_ROUTE}>
               Create Ride Listings
             </Link>
           </h3>
@@ -59,7 +60,7 @@ const Content = () => {
             className="w-full h-48 object-center rounded-md"
           />
           <h3 className="text-2xl font-semibold mt-4 group-hover:text-green-500 group-hover:scale-105 transition-transform duration-300">
-            <Link href="/all-listings">
+            <Link href={ALLLISTING_ROUTE}>
               Show All Listings
             </Link>
           </h3>

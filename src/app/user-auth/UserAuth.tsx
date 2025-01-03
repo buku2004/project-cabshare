@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 
+
 const UserAuth = () => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-8">
+    <div className="bg-white p-6 rounded-lg shadow-lg flex items-center space-x-8 mt-[6rem]">
       <div className="flex-shrink-0">
         <img
-          src="./userauth.webp"
+          src="/userauth.webp"
           alt="User Authentication"
           className="w-48 h-48 object-cover"
         />

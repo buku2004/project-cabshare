@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { app, db } from "./firebase"; // Adjust the path
+import { db } from "../constants/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import Footer from "../components/Footer";
 
@@ -108,7 +108,7 @@ const ShowAllListings = () => {
   const nextTwoWeeks = generateNextTwoWeeks();
 
   return (
-    <div className="bg-gray-900 min-h-screen text-white">
+    <div className="bg-gray-900 min-h-screen text-white mt-8">
       <header className="bg-yellow-500 px-6 py-4 flex justify-between items-center">
         <h1 className="text-2xl font-bold">Cab Share Listings</h1>
         <p className="italic">Ride Together, Save More</p>
@@ -206,12 +206,12 @@ const ShowAllListings = () => {
 
           {/* Listings Section */}
           <div className="flex-1">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredListings.length > 0 ? (
                 filteredListings.map((listing) => (
                   <div
                     key={listing.id}
-                    className="bg-gray-800 p-4 rounded-md shadow-md border border-gray-700 transition-transform duration-500 hover:bg-green-400 hover:scale-105"
+                    className="bg-gray-800 p-6 rounded-xl shadow-md border border-gray-700 hover:shadow-lg hover:shadow-green-300 transition-transform transform duration-300 hover:scale-105"
                   >
                     <h3 className="text-lg font-semibold">{listing.name}</h3>
                     <p>Phone: {listing.phone}</p>

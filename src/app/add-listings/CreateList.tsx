@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { db , app1 } from "./firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { db } from "../constants/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 const CreateList = () => {
   const [showForm, setShowForm] = useState(false);
@@ -28,12 +28,11 @@ const CreateList = () => {
     e.preventDefault();
 
     try {
-      // Add the listing to Firestore
-      // await addDoc(collection(db, "listings"), formData);
-      const listingsCollectionRef = collection(db, "listings");
+      const docID = formData.destination;
+      const listingsCollectionRef = doc(db, "listings", docID);
 
       // Add the listing to Firestore
-      await addDoc(listingsCollectionRef, formData);
+      await setDoc(listingsCollectionRef, formData);
       alert("Listing submitted successfully!");
       setFormData({
         name: "",
@@ -47,12 +46,12 @@ const CreateList = () => {
       setShowForm(false);
     } catch (error) {
       console.error("Error adding document: ", error);
-      alert("Failed to submit the listing.");
+      alert(`Failed to submit feedback: ${error.message}`);
     }
   };
 
   return (
-    <div className="bg-gray-50 p-6 md:p-12 flex flex-col md:flex-row items-center md:items-start">
+    <div className="bg-gray-50 mt-[6rem] p-6 md:p-12 flex flex-col md:flex-row items-center md:items-start">
       <div className="w-full md:w-1/3 mb-6 md:mb-0">
         <img
           src="./addlisting.webp"
@@ -96,7 +95,7 @@ const CreateList = () => {
                     type={input.type}
                     id={input.name}
                     name={input.name}
-                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-green-300"
+                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-green-300 text-black"
                     placeholder={input.placeholder}
 
                     value={formData[input.name as keyof typeof formData]}
