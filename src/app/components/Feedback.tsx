@@ -7,7 +7,7 @@ const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
 const FeedbackForm = () => {
   
-  const [showForm, setShowForm] = useState(false);
+  // const [showForm, setShowForm] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -49,7 +49,7 @@ const FeedbackForm = () => {
         message: "",
         consent: false,
       });
-      setShowForm(false);
+      // setShowForm(false);
     } catch (error) {
       console.error("Error adding document: ", error);
       alert(`Failed to submit feedback: ${error.message}`);
