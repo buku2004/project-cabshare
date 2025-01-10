@@ -52,7 +52,7 @@ const FeedbackForm = () => {
       // setShowForm(false);
     } catch (error) {
       console.error("Error adding document: ", error);
-      alert(`Failed to submit feedback: ${error.message}`);
+      alert(`Failed to submit feedback: ${(error as Error).message}`);
     }
   };
 
