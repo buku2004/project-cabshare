@@ -7,14 +7,6 @@ from nltk.tokenize import word_tokenize
 import string
 from nltk.sentiment import SentimentIntensityAnalyzer
 
-import nltk
-
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('punkt_tab')
-
-print("All required NLTK resources have been downloaded successfully!")
-
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('vader_lexicon')
