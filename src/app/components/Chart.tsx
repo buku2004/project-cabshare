@@ -1,5 +1,5 @@
-
 "use client"
+
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
@@ -12,14 +12,14 @@ import {
   Legend,
 } from 'chart.js';
 import { getDoc, doc } from 'firebase/firestore';
-import { db } from '../constants/firebase'; // Assuming firebaseConfig exports a configured Firestore instance
+import { db } from '../constants/firebase';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const BarChartPage: React.FC = () => {
   // State for dynamic data
   const [chartData, setChartData] = useState<number[]>([]);
-  const [labels, setLabels] = useState<string[]>(['Negative', 'Neutral', 'Positive']);
+  const [labels,] = useState<string[]>(['Negative', 'Neutral', 'Positive']);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
