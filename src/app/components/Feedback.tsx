@@ -59,7 +59,7 @@ const FeedbackForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-[#A3A3A3] p-8 rounded-lg shadow-md w-full max-w"
+      className="bg-[#FEE715] p-8 rounded-lg shadow-md w-full max-w"
     >
       <h2 className="text-4xl font-bold mb-4"> We are here to help you ride share!</h2>
       <p className="text-white mb-6">Get in touch by giving your valuable feedback</p>
@@ -135,7 +135,7 @@ const FeedbackForm = () => {
 
 const Feedback = () => {
   return (
-    <div className="flex flex-col lg:flex-row gap-8 p-8 bg-gray-900 text-white ">
+    <div className="flex flex-col lg:flex-row gap-8 p-8 bg-[#101820] text-white ">
       {/* Left: Feedback Form */}
       <div className="flex-1 flex justify-center h-[37.5rem]">
         <FeedbackForm />

@@ -82,7 +82,7 @@ const BarChartPage: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center h-screen px-4 md:px-16">
+    <div className="flex flex-col md:flex-row items-center justify-center h-screen px-4 md:px-16 bg-[#101820]">
       {/* Left Section */}
       <div className="flex flex-col w-full md:w-1/2 p-4 space-y-4">
         <h1 className="text-2xl font-bold text-gray-800">Sentiments Summary</h1>

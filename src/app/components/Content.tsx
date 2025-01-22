@@ -5,7 +5,7 @@ import { ADDLISTING_ROUTE, ALLLISTING_ROUTE } from "../constants/routes";
 const Content = () => {
   return (
     <div id="services" 
-      className="bg-[#2E2E2E] text-white p-6 md:p-10 lg:px-[15rem]">
+      className="bg-[#101820] text-white p-6 md:p-10 lg:px-[15rem]">
       <div className="mb-6 text-center md:text-left">
         <div className="text-white inline-block rounded-md font-semibold text-sm uppercase">
           Smart Ride Sharing
@@ -18,7 +18,7 @@ const Content = () => {
       {/* Feature Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Card 1 */}
-        <div className="bg-[#FFBA08] shadow-lg p-6 rounded-lg group hover:scale-105 transform transition-transform duration-300">
+        <div className="bg-[#FEE715] shadow-lg p-6 rounded-lg group hover:scale-105 transform transition-transform duration-300">
           <img
             src="./userauth.webp"
             alt="User Authentication"
@@ -35,7 +35,7 @@ const Content = () => {
         </div>
 
         {/* Card 2 */}
-        <div className="bg-[#FFBA08] shadow-lg p-6 rounded-lg group hover:scale-105 transform transition-transform duration-300">
+        <div className="bg-[#FEE715] shadow-lg p-6 rounded-lg group hover:scale-105 transform transition-transform duration-300">
           <img
             src="./addlisting.webp"
             alt="Create Ride Listings"
@@ -53,7 +53,7 @@ const Content = () => {
         </div>
 
         {/* Card 3 */}
-        <div className="bg-[#FFBA08] shadow-lg p-6 rounded-lg group hover:scale-105 transform transition-transform duration-300">
+        <div className="bg-[#FEE715] shadow-lg p-6 rounded-lg group hover:scale-105 transform transition-transform duration-300">
           <img
             src="alllistings.webp"
             alt="Show All Listings"
