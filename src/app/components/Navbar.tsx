@@ -4,20 +4,20 @@ import Link from "next/link";
 import { auth, googleProvider } from "../constants/firebase";
 import { signInWithPopup, signOut, User } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import { FaUserCircle } from "react-icons/fa"; 
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
-  const [user, setUser] = useState<User | null>(null); 
+  const [user, setUser] = useState<User | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const router = useRouter();
 
-  // Check if the user is logged in
   useEffect(() => {
     const logout = auth.onAuthStateChanged((authUser: User | null) => {
       setUser(authUser);
     });
 
-    return () => logout(); 
+    return () => logout();
   }, []);
 
   const handleGoogleLogin = async (): Promise<void> => {
@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
   const handleSignOut = async (): Promise<void> => {
     try {
       await signOut(auth);
-      setUser(null); 
+      setUser(null);
       router.push("/");
     } catch (error) {
       console.error("Sign Out Error:", error);
@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#101820] text-white shadow-md z-50">
+    <nav className="fixed top-0 left-0 w-full bg-[#101820] text-white shadow-md z-50 drop-shadow-xl">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
             className="w-[5rem]"
           />
 
-          {/* Navigation Links */}
+          {/* Desktop Navigation Links */}
           <div className="hidden md:flex text-center space-x-8">
             <Link
               href="/"
@@ -84,12 +84,10 @@ const Navbar: React.FC = () => {
           {/* Sign Up or Profile Icon */}
           {user ? (
             <div className="relative">
-              {/* Profile Icon (Dropdown) */}
               <button
                 className="text-gray-300 hover:text-teal-400 p-2"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
-                {/* If user has a photoURL, use that image, else fallback to the default icon */}
                 {user.photoURL ? (
                   <img
                     src={user.photoURL}
@@ -103,13 +101,13 @@ const Navbar: React.FC = () => {
 
               {/* Dropdown Menu */}
               {dropdownOpen && (
-                <div className="absolute bg-white text-black rounded shadow-md">
+                <div className="absolute right-0 mt-2 bg-white text-black rounded shadow-md">
                   <Link href="/" className="block px-4 py-2">
                     Profile
                   </Link>
                   <button
                     onClick={handleSignOut}
-                    className="block px-4 py-2 text-red-500 w-[4rem] border-t-2"
+                    className="block px-4 py-2 text-red-500 border-t-2 w-full"
                   >
                     Logout
                   </button>
@@ -125,11 +123,12 @@ const Navbar: React.FC = () => {
             </div>
           )}
 
-          {/* Mobile Menu */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               className="text-gray-300 hover:text-white focus:outline-none"
               aria-label="Open Menu"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <svg
                 className="h-6 w-6"
@@ -149,6 +148,72 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile Navigation Menu */}
+      {mobileMenuOpen && (
+        <div className={`md:hidden bg-[#101820] text-white overflow-hidden duration-300 ease-in-out ${
+          mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+          <Link
+            href="/"
+            className="block px-4 py-2 text-gray-300 hover:text-teal-400"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            href="/"
+            className="block px-4 py-2 text-gray-300 hover:text-teal-400"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            About
+          </Link>
+          <Link
+            href="/"
+            className="block px-4 py-2 text-gray-300 hover:text-teal-400"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Features
+          </Link>
+          <Link
+            href="/"
+            className="block px-4 py-2 text-gray-300 hover:text-teal-400"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Contact
+          </Link>
+          {user && (
+            <>
+              <Link
+                href="/"
+                className="block px-4 py-2 text-gray-300 hover:text-teal-400"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Profile
+              </Link>
+              <button
+                onClick={() => {
+                  handleSignOut();
+                  setMobileMenuOpen(false);
+                }}
+                className="block px-4 py-2 text-red-500"
+              >
+                Logout
+              </button>
+            </>
+          )}
+          {!user && (
+            <button
+              onClick={() => {
+                handleGoogleLogin();
+                setMobileMenuOpen(false);
+              }}
+              className="block px-4 py-2 bg-teal-400 text-black rounded hover:opacity-90"
+            >
+              Sign Up
+            </button>
+          )}
+        </div>
+      )}
     </nav>
   );
 };

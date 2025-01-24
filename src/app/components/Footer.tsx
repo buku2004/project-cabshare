@@ -34,7 +34,7 @@ const Footer = () => {
               </Link>
             </p>
             <p className="text-sm mt-4">
-              Powered by NIT Rourkela Community
+              Powered by Kakarot
             </p>
             <p className="text-sm mt-2">
               © 2024 CabShare-NITR. All Rights Reserved.
