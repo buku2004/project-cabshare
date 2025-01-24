@@ -59,10 +59,10 @@ const FeedbackForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-[#FEE715] p-8 rounded-lg shadow-md w-full max-w"
+      className="bg-[#E8C547] p-8 rounded-lg shadow-md w-full max-w text-[#2E2E2E]"
     >
-      <h2 className="text-4xl font-bold mb-4"> We are here to help you ride share!</h2>
-      <p className="text-white mb-6">Get in touch by giving your valuable feedback</p>
+      <h2 className="text-4xl text-[#2E2E2E] font-bold mb-4"> We are here to help you ride share!</h2>
+      <p className="text-[#2E2E2E] mb-6">Get in touch by giving your valuable feedback</p>
 
       <label className="block mb-2 text-sm font-medium">
         Name *
@@ -72,7 +72,7 @@ const FeedbackForm = () => {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full mt-1 p-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full mt-1 p-2 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
         />
       </label>
 
@@ -84,7 +84,7 @@ const FeedbackForm = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full mt-1 p-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full mt-1 p-2 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
         />
       </label>
 
@@ -96,7 +96,7 @@ const FeedbackForm = () => {
           value={formData.phone}
           onChange={handleChange}
           required
-          className="w-full mt-1 p-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full mt-1 p-2 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
         />
       </label>
 
@@ -106,12 +106,12 @@ const FeedbackForm = () => {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          className="w-full mt-1 p-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full mt-1 p-2 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
           rows={4}
         ></textarea>
       </label>
 
-      <label className="flex items-center mb-6 text-sm">
+      <label className="flex items-center mb-6 text-sm font-bold">
         <input
           type="checkbox"
           name="consent"
@@ -125,7 +125,7 @@ const FeedbackForm = () => {
 
       <button
         type="submit"
-        className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors"
+        className="w-full bg-[#2E2E2E] text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors"
       >
         Submit
       </button>

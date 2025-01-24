@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Nunito } from "next/font/google";
+import { Josefin_Sans } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-const Nun = Nunito({
+const Nun = Josefin_Sans({
   subsets: ['latin'],
-  weight: ['500'],
+  weight: ['400'],
   variable: '--merriweather'
 });
 

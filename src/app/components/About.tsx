@@ -1,18 +1,18 @@
-import React from 'react'
+import React from "react";
 
 function About() {
   return (
-    <div className="bg-[#101820] text-black h-screen flex justify-center items-center">
-      <div className="grid md:grid-cols-2 gap-8 w-11/12 max-w-5xl bg-[#FEE715] rounded-lg overflow-hidden shadow-lg">
+    <div className="bg-[#101820] text-black py-8 flex justify-center items-center h-screen">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-11/12 max-w-5xl bg-[#E8C547] rounded-lg overflow-hidden shadow-lg">
         {/* Left Section - Text */}
-        <div className="p-8">
-          <h2 className="text-xs uppercase font-bold tracking-widest text-teal-800 mb-2">
+        <div className="p-6 md:p-8">
+          <h2 className="text-sm md:text-xs uppercase font-bold tracking-widest text-teal-800 mb-2">
             Ride Together, Save Together
           </h2>
-          <h1 className="text-4xl font-extrabold mb-4">
+          <h1 className="text-2xl md:text-4xl font-extrabold mb-4">
             Join the NIT Rourkela cab-sharing community
           </h1>
-          <p className="text-[#2E2E2E] mb-4 leading-relaxed">
+          <p className="text-sm md:text-base text-[#2E2E2E] mb-4 leading-relaxed">
             CabShare-NITR is a modern cab-sharing platform designed exclusively
             for the vibrant community of NIT Rourkela. Our user-friendly
             interface allows students to easily share rides, saving money while
@@ -31,16 +31,16 @@ function About() {
         </div>
 
         {/* Right Section - Image */}
-        <div className="relative">
+        <div className="relative hidden sm:block">
           <img
-            src="./about_bg.png" // Replace with the actual image URL
+            src="./about_bg.png"
             alt="Cars on the road"
-            className="w-full h-full object-cover"
+            className="w-full h-48 sm:h-full object-cover rounded-b-lg md:rounded-none"
           />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default About
+export default About;
