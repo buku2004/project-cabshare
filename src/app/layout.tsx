@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={Nun.className}>
+      <body className={Nun.className} suppressHydrationWarning >
         <Navbar/>
         {children}
         <Footer/>
