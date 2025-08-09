@@ -11,9 +11,9 @@ import Stats from "./Stats"
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-16">
+    <section className="relative overflow-hidden pt-16 mb-4 sm:mb-10 md:mb-12 lg:mb-16">
       <AnimatedBackground />
-      <div className="container mx-auto max-w-7xl px-4 py-8 sm:py-12 md:py-16 lg:py-24">
+      <div className="container mx-auto max-w-7xl px-4 py-6 sm:py-12 md:py-12 lg:py-20">
         <div className="grid items-center gap-8 md:gap-12 lg:grid-cols-2">
           {/* Left: Content */}
           <div className="relative z-10 space-y-4 sm:space-y-6 text-center lg:text-left">

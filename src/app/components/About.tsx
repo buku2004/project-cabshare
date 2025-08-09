@@ -2,8 +2,8 @@ import React from "react";
 
 function About() {
   return (
-    <div className="bg-[#101820] text-black py-8 flex justify-center items-center h-screen">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-11/12 max-w-5xl bg-[#E8C547] rounded-lg overflow-hidden shadow-lg">
+    <div className="bg-[#101820] text-black py-16 sm:py-20 md:py-24 flex justify-center items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-10/12 sm:w-9/12 md:w-10/12 max-w-4xl mx-4 sm:mx-6 md:mx-8 bg-[#E8C547] rounded-lg overflow-hidden shadow-lg">
         {/* Left Section - Text */}
         <div className="p-6 md:p-8">
           <h2 className="text-sm md:text-xs uppercase font-bold tracking-widest text-teal-800 mb-2">
