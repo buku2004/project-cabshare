@@ -43,39 +43,39 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#101820] text-white shadow-md z-50 drop-shadow-xl">
+    <nav className="fixed top-0 left-0 w-full bg-[#29323c] text-black shadow-md z-50 drop-shadow-xl">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <img
-            src="./Logo_final.png"
+            src="./logocabshare.png"
             alt="CabShare-NITR Logo"
-            className="w-[5rem]"
+            className="w-[11rem]"
           />
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex text-center space-x-8">
             <Link
               href="/"
-              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-lg font-bold"
+              className="text-black hover:text-teal-400 px-3 py-2 rounded-md text-lg font-bold"
             >
               Home
             </Link>
             <Link
               href="/"
-              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-lg font-bold"
+              className="text-black hover:text-teal-400 px-3 py-2 rounded-md text-lg font-bold"
             >
               About
             </Link>
             <Link
               href="/"
-              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-lg font-bold"
+              className="text-black hover:text-teal-400 px-3 py-2 rounded-md text-lg font-bold"
             >
               Features
             </Link>
             <Link
               href="/"
-              className="text-gray-300 hover:text-teal-400 px-3 py-2 rounded-md text-lg font-bold"
+              className="text-black hover:text-teal-400 px-3 py-2 rounded-md text-lg font-bold"
             >
               Contact
             </Link>
