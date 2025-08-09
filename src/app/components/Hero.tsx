@@ -5,23 +5,15 @@ import React from "react";
 const Hero = () => {
   return (
     <div
-      className="relative bg-cover bg-center h-screen"
-      style={{
-        backgroundImage: `url('./Hero_image.png')`,
-        height: "100vh",
-        width: "100%",
-      }}
+      className="relative h-screen bg-gray-50"
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center h-full text-white">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center h-full">
         <div className="max-w-2xl px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-black opacity-0 animate-[fadeIn_1s_ease-in_forwards]">
             Ride together, save more
           </h1>
-          <p className="text-lg md:text-xl mb-6">
+          <p className="text-lg md:text-xl mb-6 text-gray-800 opacity-0 animate-[fadeIn_1s_ease-in_0.5s_forwards]">
             Join the NITR-CabShare community today!
           </p>
           <button
@@ -38,7 +30,7 @@ const Hero = () => {
                 console.error("Element with ID 'services' not found.");
               }
             }}
-            className="px-6 py-3 bg-green-500 text-white text-lg font-semibold rounded-md hover:bg-green-600"
+            className="px-6 py-3 bg-teal-500 text-white text-lg font-semibold rounded-md hover:bg-teal-600 transition-colors duration-300 opacity-0 animate-[fadeIn_1s_ease-in_1s_forwards]"
           >
             View Services
           </button>
