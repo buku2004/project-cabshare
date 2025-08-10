@@ -62,8 +62,7 @@ export default function Stats() {
         </div>
         <div>
           <div className="text-2xl font-bold text-gray-900">
-            {"₹"}
-            <CountUp to={350000} />
+            <CountUp to={35000} prefix="₹" />
           </div>
           <div className="text-xs text-gray-600">{"Saved by the community"}</div>
         </div>

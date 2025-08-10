@@ -14,15 +14,15 @@ export default function Hero() {
     <section className="relative overflow-hidden pt-16 mb-4 sm:mb-10 md:mb-12 lg:mb-16">
       <AnimatedBackground />
       <div className="container mx-auto max-w-7xl px-4 py-6 sm:py-12 md:py-12 lg:py-20">
-        <div className="grid items-center gap-8 md:gap-12 lg:grid-cols-2">
+        <div className="grid items-center gap-6 sm:gap-8 md:gap-12 lg:grid-cols-2">
           {/* Left: Content */}
-          <div className="relative z-10 space-y-4 sm:space-y-6 text-center lg:text-left">
+          <div className="relative z-10 space-y-4 sm:space-y-6 text-center lg:text-left order-1 lg:order-1">
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700 shadow-sm">
               <GraduationCap className="h-4 w-4" />
               {"NIT Rourkela • Campus Ride Share"}
             </div>
 
-            <h1 className="text-balance text-3xl font-extrabold tracking-tight sm:text-5xl md:text-5xl lg:text-6xl">
+            <h1 className="text-balance text-2xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
               {"Share your ride. "}
               <span className="text-amber-600">{"Save money."}</span>{" "}
               <span className="text-orange-500">{"Go together."}</span>
@@ -42,7 +42,7 @@ export default function Hero() {
                 typingSpeed={26}
                 deletingSpeed={18}
                 pauseTime={1400}
-                className="font-medium text-black text-base sm:text-lg md:text-xl"
+                className="font-medium text-black text-sm sm:text-base md:text-lg lg:text-xl"
               />
             </div>
 
@@ -70,14 +70,14 @@ export default function Hero() {
               </motion.div>
             </div>
 
-            <div className="pt-4 sm:pt-6">
+            <div className="pt-3 sm:pt-4 lg:pt-6">
               <Stats />
             </div>
           </div>
 
           {/* Right: Visual */}
-          <div className="relative order-first lg:order-last">
-            <CampusCabAnimation className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border bg-white/70 shadow-lg backdrop-blur" />
+          <div className="relative order-2 lg:order-2">
+            <CampusCabAnimation className="relative aspect-[4/3] w-full max-w-lg mx-auto lg:max-w-full overflow-hidden rounded-xl border bg-white/70 shadow-lg backdrop-blur" />
           </div>
         </div>
       </div>

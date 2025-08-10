@@ -21,7 +21,7 @@ function Row() {
 
 export default function LogosMarquee() {
   return (
-    <div className="relative overflow-hidden -mt-8 sm:-mt-12 md:-mt-16 lg:-mt-20 py-6 sm:py-8 md:py-10">
+    <div className="relative overflow-hidden">
       <motion.div
         className="flex"
         animate={{ x: ["0%", "-50%"] }}
