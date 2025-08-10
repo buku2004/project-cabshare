@@ -22,7 +22,7 @@ export default function Hero() {
               {"NIT Rourkela • Campus Ride Share"}
             </div>
 
-            <h1 className="text-balance text-2xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl md:text-5xl lg:text-6xl">
               {"Share your ride. "}
               <span className="text-amber-600">{"Save money."}</span>{" "}
               <span className="text-orange-500">{"Go together."}</span>

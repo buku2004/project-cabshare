@@ -19,12 +19,15 @@ const nodes: Node[] = [
   { id: "DBA", label: "DBA", x: 360, y: 420 },
   { id: "GDB", label: "GDB", x: 520, y: 340 },
   { id: "VS", label: "VS", x: 700, y: 290 },
+  // Added SD after VS (placed between VS and CVR for a smoother path)
+  { id: "SD", label: "SD", x: 640, y: 240 },
   { id: "CVR", label: "CVR", x: 560, y: 160 },
   { id: "KMS", label: "KMS", x: 320, y: 210 },
 ]
 
 // Sequence (loop)
-const routeIds = ["HB", "MSS", "DBA", "GDB", "VS", "CVR", "KMS", "HB"]
+// Insert SD right after VS
+const routeIds = ["HB", "MSS", "DBA", "GDB", "VS", "SD", "CVR", "KMS", "HB"]
 
 function distance(a: Node, b: Node) {
   const dx = b.x - a.x

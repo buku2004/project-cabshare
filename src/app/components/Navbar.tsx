@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -18,6 +18,12 @@ const links = [
 
 const Navbar = () => {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  // Close the sheet whenever the route changes
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <header className="fixed top-0 left-0 w-full border-b bg-white/90 backdrop-blur z-50">
@@ -54,7 +60,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         <div className="md:hidden">
-          <Sheet>
+          <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" aria-label="Open menu">
                 <Menu className="h-5 w-5" />
@@ -71,20 +77,23 @@ const Navbar = () => {
               </div>
               <div className="mt-8 grid gap-4">
                 {links.map((l) => (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    className={cn(
-                      "rounded px-3 py-2 text-base transition-colors hover:bg-gray-50",
-                      pathname === l.href && "bg-gray-50 font-medium",
-                    )}
-                  >
-                    {l.label}
-                  </Link>
+                  <SheetClose asChild key={l.href}>
+                    <Link
+                      href={l.href}
+                      className={cn(
+                        "rounded px-3 py-2 text-base transition-colors hover:bg-gray-50",
+                        pathname === l.href && "bg-gray-50 font-medium",
+                      )}
+                    >
+                      {l.label}
+                    </Link>
+                  </SheetClose>
                 ))}
-                <Button asChild className="bg-amber-600 text-white hover:bg-amber-700">
-                  <Link href="/post-ride">{"Post a Ride"}</Link>
-                </Button>
+                <SheetClose asChild>
+                  <Button asChild className="bg-amber-600 text-white hover:bg-amber-700">
+                    <Link href="/post-ride">{"Post a Ride"}</Link>
+                  </Button>
+                </SheetClose>
               </div>
             </SheetContent>
           </Sheet>
