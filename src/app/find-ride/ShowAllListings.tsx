@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { db } from "../constants/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -19,6 +19,10 @@ const RideList: React.FC = () => {
   const [rides, setRides] = useState<Ride[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
+  const [selectedRide, setSelectedRide] = useState<Ride | null>(null);
+
+  // Ref for hidden date picker
+  const dateInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,9 +52,7 @@ const RideList: React.FC = () => {
         ride.drop.toLowerCase().includes(query) ||
         ride.name.toLowerCase().includes(query);
 
-      const matchesDate = date
-        ? ride.datetime.includes(date)
-        : true;
+      const matchesDate = date ? ride.datetime.includes(date) : true;
 
       return matchesSearch && matchesDate;
     });
@@ -58,20 +60,21 @@ const RideList: React.FC = () => {
     setRides(filtered);
   };
 
-  const handleContact = (contact: string) => {
-    console.log("Contacting:", contact);
+  const handleDetails = (ride: Ride) => {
+    setSelectedRide(ride);
   };
 
-  const handleDetails = (ride: Ride) => {
-    console.log("Showing details for:", ride);
+  const closeModal = () => {
+    setSelectedRide(null);
   };
 
   return (
     <div className="min-h-screen bg-white pt-20 pb-12">
       <div className="max-w-6xl mx-auto px-6">
         {/* Search Bar */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-12 w-full border border-yellow-100 pb-10 pt-10">
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-12 w-full border border-gray-300 pb-10 pt-10">
           <div className="flex flex-col md:flex-row items-center gap-4">
+            {/* Search input */}
             <div className="flex-1 relative w-full">
               <input
                 type="text"
@@ -81,7 +84,8 @@ const RideList: React.FC = () => {
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500 bg-white"
               />
               <svg
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"
+                onClick={handleSearch} // Search instantly on click
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -94,16 +98,30 @@ const RideList: React.FC = () => {
                 />
               </svg>
             </div>
+
+            {/* Date picker */}
             <div className="relative w-full md:w-auto">
               <input
                 type="text"
                 placeholder="dd-mm-yyyy"
                 value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
+                readOnly // prevent manual typing
                 className="w-full md:w-auto pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500 bg-white"
               />
+              {/* Hidden date input */}
+              <input
+                type="date"
+                ref={dateInputRef}
+                className="hidden"
+                onChange={(e) => {
+                  const dateValue = e.target.value;
+                  setSelectedDate(dateValue);
+                  handleSearch(); // auto filter on date change
+                }}
+              />
               <svg
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"
+                onClick={() => dateInputRef.current?.showPicker()} // open calendar
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 cursor-pointer hover:text-gray-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -116,6 +134,8 @@ const RideList: React.FC = () => {
                 />
               </svg>
             </div>
+
+            {/* Search button (still available) */}
             <button
               onClick={handleSearch}
               className="w-full md:w-auto bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-xl font-medium transition duration-300"
@@ -130,7 +150,7 @@ const RideList: React.FC = () => {
           {rides.map((ride) => (
             <div
               key={ride.id}
-              className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition duration-300 border border-yellow-100"
+              className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition duration-300 border border-gray-200"
             >
               <div className="flex items-center gap-2 mb-4">
                 <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,7 +187,7 @@ const RideList: React.FC = () => {
                   Details
                 </button>
                 <button
-                  onClick={() => handleContact(ride.contact)}
+                  onClick={() => console.log("Contact:", ride.contact)}
                   className="flex-1 bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-lg text-sm flex items-center justify-center"
                 >
                   Contact
@@ -177,6 +197,27 @@ const RideList: React.FC = () => {
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedRide && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
+          <div className="bg-white rounded-xl shadow-lg p-6 w-96">
+            <h2 className="text-xl font-bold mb-4">Ride Details</h2>
+            <p><span className="font-semibold">Name:</span> {selectedRide.name}</p>
+            <p><span className="font-semibold">Contact:</span> {selectedRide.contact}</p>
+            <p><span className="font-semibold">Notes:</span> {selectedRide.notes || "No notes"}</p>
+
+            <div className="mt-6 flex justify-end">
+              <button
+                onClick={closeModal}
+                className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
