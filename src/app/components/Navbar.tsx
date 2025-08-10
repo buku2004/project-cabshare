@@ -4,9 +4,9 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from "./ui/sheet";
 import { cn } from "../../lib/utils";
 
 const links = [
@@ -61,6 +61,14 @@ const Navbar = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-72">
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              <div className="flex justify-end">
+                <SheetClose asChild>
+                  <Button variant="outline" size="icon" aria-label="Close menu">
+                    <X className="h-5 w-5" />
+                  </Button>
+                </SheetClose>
+              </div>
               <div className="mt-8 grid gap-4">
                 {links.map((l) => (
                   <Link

@@ -61,6 +61,18 @@ const SheetContent = React.forwardRef<
 ));
 SheetContent.displayName = DialogPrimitive.Content.displayName;
 
+const SheetTitle = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Title>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
+>(({ className, ...props }, ref) => (
+  <DialogPrimitive.Title
+    ref={ref}
+    className={cn("text-lg font-semibold text-gray-900", className)}
+    {...props}
+  />
+));
+SheetTitle.displayName = DialogPrimitive.Title.displayName;
+
 export {
   Sheet,
   SheetPortal,
@@ -68,4 +80,5 @@ export {
   SheetTrigger,
   SheetClose,
   SheetContent,
+  SheetTitle,
 };
