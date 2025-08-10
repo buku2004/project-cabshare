@@ -32,7 +32,7 @@ const features = [
 
 export default function FeaturesGrid() {
   return (
-    <div className="pt-6 sm:pt-10 md:pt-8 lg:pt-10 pb-12 sm:pb-12 md:pb-20 lg:pb-24 mb-12 sm:mb-16 md:mb-20 lg:mb-24">
+    <div className="pt-6 sm:pt-10 md:pt-8 lg:pt-10 pb-4 sm:pb-4 md:pb-4 lg:pb-4 mb-1 sm:mb-1 md:mb-1 lg:mb-1">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 space-y-8">
         <div className="text-center">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">
