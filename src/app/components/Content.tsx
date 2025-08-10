@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ADDLISTING_ROUTE, ALLLISTING_ROUTE } from "../constants/routes";
 
 const Content = () => {
@@ -19,9 +20,11 @@ const Content = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Card 1 */}
         <div className="bg-[#E8C547] shadow-lg p-6 rounded-lg group hover:scale-105 transform transition-transform duration-300">
-          <img
-            src="./userauth.webp"
+          <Image
+            src="/userauth.webp"
             alt="User Authentication"
+            width={400}
+            height={192}
             className="w-full h-48 object-cover rounded-md"
           />
           <h3 className="text-2xl font-semibold mt-4 text-[#2E2E2E] group-hover:text-green-500 transition-colors">
@@ -34,9 +37,11 @@ const Content = () => {
 
         {/* Card 2 */}
         <div className="bg-[#E8C547] shadow-lg p-6 rounded-lg group hover:scale-105 transform transition-transform duration-300">
-          <img
-            src="./addlisting.webp"
+          <Image
+            src="/addlisting.webp"
             alt="Create Ride Listings"
+            width={400}
+            height={192}
             className="w-full h-48 object-cover rounded-md"
           />
           <h3 className="text-2xl font-semibold mt-4 text-[#2E2E2E] group-hover:text-green-500 transition-colors">
@@ -50,9 +55,11 @@ const Content = () => {
 
         {/* Card 3 */}
         <div className="bg-[#E8C547] shadow-lg p-6 rounded-lg group hover:scale-105 transform transition-transform duration-300">
-          <img
-            src="./alllistings.webp"
+          <Image
+            src="/alllistings.webp"
             alt="Show All Listings"
+            width={400}
+            height={192}
             className="w-full h-48 object-cover rounded-md"
           />
           <h3 className="text-2xl font-semibold mt-4 text-[#2E2E2E] group-hover:text-green-500 transition-colors">

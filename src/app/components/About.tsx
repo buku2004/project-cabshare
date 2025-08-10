@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 function About() {
   return (
@@ -32,9 +33,11 @@ function About() {
 
         {/* Right Section - Image */}
         <div className="relative hidden sm:block">
-          <img
-            src="./about_bg.png"
+          <Image
+            src="/about_bg.png"
             alt="Cars on the road"
+            width={600}
+            height={400}
             className="w-full h-48 sm:h-full object-cover rounded-b-lg md:rounded-none"
           />
         </div>

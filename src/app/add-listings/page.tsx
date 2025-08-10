@@ -1,12 +1,12 @@
-// import React from 'react'
-// import CreateList from './CreateList'
+import React from 'react'
+import CreateList from './CreateList'
 
-// const page = () => {
-//   return (
-//     <div>
-//         <CreateList/>
-//     </div>
-//   )
-// }
+const page = () => {
+  return (
+    <div>
+        <CreateList/>
+    </div>
+  )
+}
 
-// export default page
+export default page

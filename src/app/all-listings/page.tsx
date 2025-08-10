@@ -1,12 +1,12 @@
-// import React from 'react'
-// import ShowAllListings from './ShowAllListings'
+import React from 'react'
+import ShowAllListings from './ShowAllListings'
 
-// const page = () => {
-//   return (
-//     <div>
-//     <ShowAllListings/>
-//     </div>
-//   )
-// }
+const page = () => {
+  return (
+    <div>
+    <ShowAllListings/>
+    </div>
+  )
+}
 
-// export default page
+export default page

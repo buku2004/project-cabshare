@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import { db } from "../constants/firebase";
 import { doc, setDoc } from "firebase/firestore";
 
@@ -53,9 +54,11 @@ const CreateList = () => {
   return (
     <div className="bg-gray-50 mt-[6rem] p-6 md:p-12 flex flex-col md:flex-row items-center md:items-start">
       <div className="w-full md:w-1/3 mb-6 md:mb-0">
-        <img
-          src="./addlisting.webp"
+        <Image
+          src="/addlisting.webp"
           alt="Ride Listing Preview"
+          width={400}
+          height={300}
           className="rounded-md shadow-md"
         />
       </div>
