@@ -15,6 +15,7 @@ interface Ride {
 }
 
 const RideList: React.FC = () => {
+  const [allRides, setAllRides] = useState<Ride[]>([]);
   const [rides, setRides] = useState<Ride[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
@@ -27,6 +28,7 @@ const RideList: React.FC = () => {
           id: doc.id,
           ...doc.data(),
         })) as Ride[];
+        setAllRides(rideList);
         setRides(rideList);
       } catch (error) {
         console.error("Error fetching rides:", error);
@@ -37,7 +39,23 @@ const RideList: React.FC = () => {
   }, []);
 
   const handleSearch = () => {
-    console.log("Searching for:", searchQuery, "on date:", selectedDate);
+    const query = searchQuery.toLowerCase().trim();
+    const date = selectedDate.trim();
+
+    const filtered = allRides.filter((ride) => {
+      const matchesSearch =
+        ride.pickup.toLowerCase().includes(query) ||
+        ride.drop.toLowerCase().includes(query) ||
+        ride.name.toLowerCase().includes(query);
+
+      const matchesDate = date
+        ? ride.datetime.includes(date)
+        : true;
+
+      return matchesSearch && matchesDate;
+    });
+
+    setRides(filtered);
   };
 
   const handleContact = (contact: string) => {
@@ -52,7 +70,7 @@ const RideList: React.FC = () => {
     <div className="min-h-screen bg-white pt-20 pb-12">
       <div className="max-w-6xl mx-auto px-6">
         {/* Search Bar */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-12 w-full border border-gray-300 pb-10 pt-10">
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-12 w-full border border-yellow-100 pb-10 pt-10">
           <div className="flex flex-col md:flex-row items-center gap-4">
             <div className="flex-1 relative w-full">
               <input
@@ -112,7 +130,7 @@ const RideList: React.FC = () => {
           {rides.map((ride) => (
             <div
               key={ride.id}
-              className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition duration-300 border border-gray-200"
+              className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition duration-300 border border-yellow-100"
             >
               <div className="flex items-center gap-2 mb-4">
                 <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -164,3 +182,4 @@ const RideList: React.FC = () => {
 };
 
 export default RideList;
+
