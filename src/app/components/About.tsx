@@ -1,48 +1,53 @@
 import React from "react";
-import Image from "next/image";
+import { PiggyBank, GraduationCap } from "lucide-react";
 
 function About() {
   return (
-    <div className="bg-[#101820] text-black py-16 sm:py-20 md:py-24 flex justify-center items-center">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-10/12 sm:w-9/12 md:w-10/12 max-w-4xl mx-4 sm:mx-6 md:mx-8 bg-[#E8C547] rounded-lg overflow-hidden shadow-lg">
-        {/* Left Section - Text */}
-        <div className="p-6 md:p-8">
-          <h2 className="text-sm md:text-xs uppercase font-bold tracking-widest text-teal-800 mb-2">
-            Ride Together, Save Together
+    <section className="bg-white py-10 sm:py-12 md:py-14 md:pt-32 sm:pt-24 pt-24">
+      <div className="container mx-auto max-w-5xl px-4 sm:px-6 md:px-8">
+        <div className="rounded-2xl border border-gray-200 bg-white shadow-sm p-6 sm:p-8">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-3">
+            About CabShare
           </h2>
-          <h1 className="text-2xl md:text-4xl font-extrabold mb-4">
-            Join the NIT Rourkela cab-sharing community
-          </h1>
-          <p className="text-sm md:text-base text-[#2E2E2E] mb-4 leading-relaxed">
-            CabShare-NITR is a modern cab-sharing platform designed exclusively
-            for the vibrant community of NIT Rourkela. Our user-friendly
-            interface allows students to easily share rides, saving money while
-            building connections. With secure login via your institute email,
-            you can create or join ride listings effortlessly. Enjoy features
-            like real-time notifications, secure messaging, and a comprehensive
-            review system that ensures safety and transparency. Experience
-            hassle-free commuting and connect with your peers today!
+          <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6">
+            CabShare is a campus-first platform for NIT Rourkela students and staff to coordinate intercity cab
+            sharing—save money, travel conveniently, and meet fellow travelers.
           </p>
-          <a
-            href="#"
-            className="text-teal-800 underline hover:text-teal-500 font-medium"
-          >
-            Get in touch
-          </a>
-        </div>
 
-        {/* Right Section - Image */}
-        <div className="relative hidden sm:block">
-          <Image
-            src="/about_bg.png"
-            alt="Cars on the road"
-            width={600}
-            height={400}
-            className="w-full h-48 sm:h-full object-cover rounded-b-lg md:rounded-none"
-          />
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
+            {/* Card: Save together */}
+            <div className="rounded-xl border border-gray-200 bg-white shadow-sm p-4 sm:p-5 md:p-6">
+              <div className="flex items-start gap-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-orange-50 text-orange-600">
+                  <PiggyBank className="h-4 w-4" />
+                </span>
+                <div>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900">Save together</h3>
+                  <p className="text-sm text-gray-600 mt-1">Split cab fares and make intercity travel more affordable.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Card: Campus-first */}
+            <div className="rounded-xl border border-gray-200 bg-white shadow-sm p-4 sm:p-5 md:p-6">
+              <div className="flex items-start gap-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-amber-50 text-amber-600">
+                  <GraduationCap className="h-4 w-4" />
+                </span>
+                <div>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900">Campus-first</h3>
+                  <p className="text-sm text-gray-600 mt-1">Built around the NITR community to make planning rides easier.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-xs sm:text-sm text-gray-500 mt-6">
+            This is an open community tool. Please verify ride details directly with the ride owner.
+          </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
