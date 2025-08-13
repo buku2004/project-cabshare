@@ -5,24 +5,28 @@ import { Users, Wallet, Clock, Phone } from "lucide-react"
 
 const features = [
   {
+    id: "user",
     icon: Users,
     title: "Campus community",
     desc: "Connect with verified students and staff from NIT Rourkela.",
     color: "text-amber-700 bg-amber-100",
   },
   {
+    id: "wallet",
     icon: Wallet,
     title: "Budget‑friendly",
     desc: "Split fares, pay less, and travel smarter together.",
     color: "text-orange-700 bg-orange-100",
   },
   {
+    id: "clock",
     icon: Clock,
     title: "Flexible schedules",
     desc: "Filter by date and time to match your plan.",
     color: "text-amber-700 bg-amber-100",
   },
   {
+    id: "phone",
     icon: Phone,
     title: "Easy contact",
     desc: "Reach owners directly and confirm details quickly.",
@@ -50,6 +54,7 @@ export default function FeaturesGrid() {
           const Icon = f.icon
           return (
             <motion.div
+              key={f.id}
               whileHover={{ scale:1.1 }}
               whileTap={{ scale:0.9 }}
               className="rounded-xl border bg-white/90 p-5 sm:p-6 md:p-7

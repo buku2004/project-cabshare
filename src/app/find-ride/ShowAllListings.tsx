@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { db } from "../constants/firebase";
 import { collection, getDocs } from "firebase/firestore";
+import Showall from "./Showall";
 
 interface Ride {
   id: string;
@@ -13,13 +14,16 @@ interface Ride {
   notes: string;
   seats: number;
 }
+const today = new Date().toISOString().split("T")[0];
 
 const RideList: React.FC = () => {
+
   const [allRides, setAllRides] = useState<Ride[]>([]);
   const [rides, setRides] = useState<Ride[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(today);
   const [selectedRide, setSelectedRide] = useState<Ride | null>(null);
+  const [showAllRides, setShowAllRides] = useState<boolean>(false);
 
   // Ref for hidden date picker
   const dateInputRef = useRef<HTMLInputElement>(null);
@@ -32,15 +36,24 @@ const RideList: React.FC = () => {
           id: doc.id,
           ...doc.data(),
         })) as Ride[];
+
         setAllRides(rideList);
-        setRides(rideList);
+
+        if(showAllRides){
+          setRides(rideList);
+        }else{
+      const todayRides = rideList.filter((ride) =>
+        ride.datetime.includes(today)
+      );
+      setRides(todayRides);
+        }   
       } catch (error) {
         console.error("Error fetching rides:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [showAllRides]);
 
   const handleSearch = () => {
     const query = searchQuery.toLowerCase().trim();
@@ -134,11 +147,19 @@ const RideList: React.FC = () => {
                 />
               </svg>
             </div>
-
+            <div className="flex justify-end">
+              <button
+                onClick={() => setShowAllRides(!showAllRides)}
+                className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl"
+              >
+               {showAllRides ? "Show Today's Rides" : "Show All Rides"}
+              </button>
+           </div>
             {/* Search button (still available) */}
             <button
               onClick={handleSearch}
-              className="w-full md:w-auto bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-xl font-medium transition duration-300"
+              className="w-full md:w-auto bg-amber-600 hover:bg-amber-700 text-white 
+              px-6 py-2 rounded-xl font-medium transition duration-300"
             >
               Search
             </button>
@@ -169,7 +190,7 @@ const RideList: React.FC = () => {
                 <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className="text-gray-600 text-sm">{ride.datetime}</span>
+                <span className="text-gray-600 text-sm">{ride.datetime.replace("T", ", ")}</span>
               </div>
 
               <div className="flex items-center gap-2 mb-6">
