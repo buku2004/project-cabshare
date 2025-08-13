@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { db } from "../constants/firebase";
 import { doc, setDoc } from "firebase/firestore";
 
-const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-
 const FeedbackForm = () => {
   
   // const [showForm, setShowForm] = useState(false);
@@ -135,19 +133,9 @@ const FeedbackForm = () => {
 
 const Feedback = () => {
   return (
-    <div className="flex flex-col lg:flex-row gap-8 p-8 bg-[#101820] text-white ">
-      {/* Left: Feedback Form */}
+    <div className="flex flex-col lg:flex-row gap-8 p-8 bg-white text-white ">
       <div className="flex-1 flex justify-center h-[37.5rem]">
         <FeedbackForm />
-      </div>
-
-      <div className="flex-1 flex justify-center">
-      <iframe width="650" height="600" 
-      style = {{border: 0}}
-      loading="lazy" 
-      allowFullScreen
-      src={`https://www.google.com/maps/embed/v1/place?q=place_id:ChIJw2HVu3IfIDoRWntq53BcqwA&key=${apiKey}`}>
-      </iframe>
       </div>
     </div>
   );

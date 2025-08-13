@@ -1,6 +1,7 @@
 import React from "react";
 import { Car, MapPin, Phone } from "lucide-react";
 
+
 const HowItWorks = () => {
   const steps = [
     {
@@ -55,7 +56,8 @@ const HowItWorks = () => {
           {steps.map((step, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-xl shadow-md p-3 sm:p-4 md:p-6 border hover:scale-105 transform transition duration-300 ease-in-out"
+              className="bg-white rounded-xl shadow-md hover:shadow-2xl p-3 sm:p-4 md:p-6 
+              border hover:scale-105 transform transition duration-300 ease-in-out"
             >
               <div className="bg-amber-100 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full mx-auto mb-3">
                 {step.icon}
@@ -81,7 +83,8 @@ const HowItWorks = () => {
             {testimonials.map((t, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-xl shadow-md p-3 sm:p-4 md:p-6 border hover:scale-105 transform transition duration-300 ease-in-out"
+                className="bg-white rounded-xl shadow-md hover:shadow-2xl p-3 sm:p-4 md:p-6
+                 border hover:scale-105 transform transition duration-300 ease-in-out"
               >
                 <p className="text-sm sm:text-base text-gray-700 mb-3 leading-relaxed italic">&ldquo;{t.text}&rdquo;</p>
                 <p className="text-sm sm:text-base text-gray-900 font-semibold">

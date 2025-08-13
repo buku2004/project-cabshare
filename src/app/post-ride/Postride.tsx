@@ -10,7 +10,8 @@ const PostRide = () => {
     drop: "",
     datetime: "",
     seats: "",
-    contact: "",
+    phone: "",
+    email: "",
     notes: "",
   });
 
@@ -33,7 +34,8 @@ const PostRide = () => {
         drop: "",
         datetime: "",
         seats: "",
-        contact: "",
+        phone: "",
+        email: "",
         notes: "",
       });
     } catch (error) {
@@ -71,7 +73,7 @@ const PostRide = () => {
             <input
               type="text"
               name="pickup"
-              placeholder="e.g., NIT Rourkela, Main Gate"
+              placeholder="e.g, NIT Rourkela, Main Gate"
               value={formData.pickup}
               onChange={handleChange}
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-orange-200"
@@ -85,7 +87,7 @@ const PostRide = () => {
             <input
               type="text"
               name="drop"
-              placeholder="e.g., Bhubaneswar Airport"
+              placeholder="e.g, Bhubaneswar Airport"
               value={formData.drop}
               onChange={handleChange}
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-orange-200"
@@ -125,19 +127,34 @@ const PostRide = () => {
             </div>
           </div>
 
-          {/* Contact info */}
+          {/* phone no */}
           <div>
-            <label className="block text-sm font-medium mb-1">Contact info</label>
+            <label className="block text-sm font-medium mb-1">Phone Number</label>
             <input
-              type="text"
-              name="contact"
-              placeholder="Phone or email"
-              value={formData.contact}
+              type="tel"
+              name="phone"
+              placeholder="e.g, 9556328888"
+              pattern="^\d{10}$"
+              value={formData.phone}
               onChange={handleChange}
+              title="please enter a valid phone number"
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-orange-200"
               required
             />
           </div>
+
+          {/* email */}
+          <div>
+            <label className="block text-sm font-medium mb-1">Email(optional)</label>
+            <input
+              type="text"
+              name="email"
+              placeholder="e.g, 123@gmail.com"
+              value={formData.pickup}
+              onChange={handleChange}
+              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-orange-200"
+            />
+          </div>          
 
           {/* Notes */}
           <div>
