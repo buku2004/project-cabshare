@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import { Users, Wallet, Clock, Phone } from "lucide-react"
 
 const features = [
@@ -35,7 +35,8 @@ export default function FeaturesGrid() {
     <div className="pt-6 sm:pt-10 md:pt-8 lg:pt-10 pb-4 sm:pb-4 md:pb-4 lg:pb-4 mb-1 sm:mb-1 md:mb-1 lg:mb-1">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 space-y-8">
         <div className="text-center">
-          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full
+           border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">
             <span>{"Why CabShare"}</span>
           </div>
           <h2 className="mt-3 text-balance text-3xl font-bold sm:text-4xl">{"Built for the NITR community"}</h2>
@@ -45,17 +46,14 @@ export default function FeaturesGrid() {
         </div>
 
         <div className="grid gap-4 sm:gap-5 md:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        {features.map((f, i) => {
+        {features.map((f) => {
           const Icon = f.icon
           return (
             <motion.div
-              key={f.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
-              transition={{ delay: i * 0.05, duration: 0.5 }}
-              whileHover={{ y: -4 }}
-              className="rounded-xl border bg-white/90 p-5 sm:p-6 md:p-7 shadow-sm hover:shadow-md transition-shadow duration-300"
+              whileHover={{ scale:1.1 }}
+              whileTap={{ scale:0.9 }}
+              className="rounded-xl border bg-white/90 p-5 sm:p-6 md:p-7
+               shadow-md hover:shadow-2xl"
             >
               <div className="px-2 py-1">
                 <div className={`mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full ${f.color}`}>

@@ -49,19 +49,19 @@ export default function Stats() {
           <Car className="h-5 w-5 text-amber-700" />
         </div>
         <div>
-          <div className="text-2xl font-bold text-gray-900">
+          <div className="text-2xl font-bold text-gray-900 flex">
             <CountUp to={1200} />
           </div>
           <div className="text-xs text-gray-600">{"Rides shared"}</div>
         </div>
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100">
           <Wallet className="h-5 w-5 text-orange-700" />
         </div>
         <div>
-          <div className="text-2xl font-bold text-gray-900">
+          <div className="text-2xl font-bold text-gray-900 flex">
             <CountUp to={35000} prefix="₹" />
           </div>
           <div className="text-xs text-gray-600">{"Saved by the community"}</div>
@@ -73,7 +73,7 @@ export default function Stats() {
           <Users className="h-5 w-5 text-amber-700" />
         </div>
         <div>
-          <div className="text-2xl font-bold text-gray-900">
+          <div className="text-2xl font-bold text-gray-900 flex">
             <CountUp to={4200} />
           </div>
           <div className="text-xs text-gray-600">{"Active members"}</div>

@@ -6,7 +6,7 @@ import { collection, getDocs } from "firebase/firestore";
 interface Ride {
   id: string;
   name: string;
-  contact: string;
+  phone: number;
   pickup: string;
   drop: string;
   datetime: string;
@@ -187,7 +187,7 @@ const RideList: React.FC = () => {
                   Details
                 </button>
                 <button
-                  onClick={() => console.log("Contact:", ride.contact)}
+                  onClick={() => console.log("Contact:", ride.phone)}
                   className="flex-1 bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-lg text-sm flex items-center justify-center"
                 >
                   Contact
@@ -204,7 +204,7 @@ const RideList: React.FC = () => {
           <div className="bg-white rounded-xl shadow-lg p-6 w-96">
             <h2 className="text-xl font-bold mb-4">Ride Details</h2>
             <p><span className="font-semibold">Name:</span> {selectedRide.name}</p>
-            <p><span className="font-semibold">Contact:</span> {selectedRide.contact}</p>
+            <p><span className="font-semibold">Contact:</span> {selectedRide.phone}</p>
             <p><span className="font-semibold">Notes:</span> {selectedRide.notes || "No notes"}</p>
 
             <div className="mt-6 flex justify-end">
