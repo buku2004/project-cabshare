@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { db } from "../constants/firebase";
 import { collection, getDocs } from "firebase/firestore";
-import Showall from "./Showall";
 
 interface Ride {
   id: string;
