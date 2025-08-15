@@ -50,7 +50,7 @@ const Footer = () => {
         flex-col sm:flex-row justify-between items-center text-xs sm:text-sm text-gray-600">
           <p className="mb-2 sm:mb-0">© 2025 CabShare • NIT Rourkela</p>
           <div className="flex gap-4">
-            <a href="#" className="hover:underline hover:text-gray-900 transition-colors">
+            <a href="#" className="hover:underline hover:text-gray-900 ">
               Made in India
             </a>
             <span>|</span>

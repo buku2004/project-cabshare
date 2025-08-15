@@ -8,9 +8,10 @@ import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from "./ui/sheet";
 import { cn } from "../../lib/utils";
+import UserStatus from "../auth/UserStatus";
 
 const links = [
-  { href: "/", label: "Home" },
+  { href: "#", label: "Home" },
   { href: "/find-ride", label: "Find a Ride" },
   { href: "/post-ride", label: "Post a Ride" },
   { href: "/about", label: "About" },
@@ -53,9 +54,10 @@ const Navbar = () => {
               {l.label}
             </Link>
           ))}
-          <Button asChild className="ml-2 bg-amber-600 text-white hover:bg-amber-700" size="sm">
-            <Link href="/post-ride">{"Post a Ride"}</Link>
-          </Button>
+          {/* <Button asChild className="ml-2 bg-amber-600 text-white hover:bg-amber-700" size="sm">
+            <Link href="/post-ride">{"Sign in"}</Link>
+          </Button> */}
+          <UserStatus/>
         </nav>
 
         {/* Mobile Navigation */}
@@ -90,9 +92,7 @@ const Navbar = () => {
                   </SheetClose>
                 ))}
                 <SheetClose asChild>
-                  <Button asChild className="bg-amber-600 text-white hover:bg-amber-700">
-                    <Link href="/post-ride">{"Post a Ride"}</Link>
-                  </Button>
+                  <UserStatus/>
                 </SheetClose>
               </div>
             </SheetContent>

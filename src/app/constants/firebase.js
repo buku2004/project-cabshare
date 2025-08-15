@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -17,16 +17,11 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 // export const analytics = getAnalytics(app);
 export const db = getFirestore(app);
-// export default db;
 
 // Auth
 export const auth = getAuth(app);
+auth.useDeviceLanguage(); // browser default language preference
 export const googleProvider = new GoogleAuthProvider();
 
-// Configure Google provider
-googleProvider.setCustomParameters({
-  prompt: 'select_account'
-});
 
-googleProvider.addScope('email');
-googleProvider.addScope('profile');
+export { signInWithPopup };
