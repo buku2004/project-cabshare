@@ -1,5 +1,5 @@
 import React from "react";
-import { Send, Car, Heart, MapPin, Mail, Phone } from "lucide-react";
+import { Send, Heart, MapPin, Mail, Phone } from "lucide-react";
 import Gmap from "./Gmap";
 import Link from "next/link";
 
@@ -138,5 +138,6 @@ const Footer = () => {
     </footer>
   );
 };
+
 
 export default Footer;
