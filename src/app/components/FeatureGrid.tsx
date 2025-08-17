@@ -38,7 +38,13 @@ export default function FeaturesGrid() {
   return (
     <div className="pt-6 sm:pt-10 md:pt-8 lg:pt-10 pb-4 sm:pb-4 md:pb-4 lg:pb-4 mb-1 sm:mb-1 md:mb-1 lg:mb-1">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 space-y-8">
-        <div className="text-center">
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <div className="mx-auto inline-flex items-center gap-2 rounded-full
            border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">
             <span>{"Why CabShare"}</span>
@@ -47,23 +53,45 @@ export default function FeaturesGrid() {
           <p className="mx-auto mt-2 max-w-2xl text-gray-600">
             {"Clean, simple, and campus‑first—everything you need to coordinate intercity rides together."}
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid gap-4 sm:gap-5 md:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-        {features.map((f) => {
+        {features.map((f, index) => {
           const Icon = f.icon
           return (
             <motion.div
               key={f.id}
-              whileHover={{ scale:1.1 }}
-              whileTap={{ scale:0.9 }}
-              className="rounded-xl border bg-white/90 p-5 sm:p-6 md:p-7
-               shadow-md hover:shadow-2xl"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ 
+                scale: 1.02,
+                y: -6,
+                rotateY: 2,
+                transition: { 
+                  duration: 0.3, 
+                  ease: "easeOut" 
+                }
+              }}
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.1,
+                ease: "easeOut"
+              }}
+              className="rounded-xl border bg-white/90 p-5 sm:p-6 md:p-7 shadow-md hover:shadow-xl hover:shadow-amber-200/20 transition-shadow duration-300 cursor-pointer will-change-transform"
+              style={{ transformOrigin: "center" }}
             >
               <div className="px-2 py-1">
-                <div className={`mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full ${f.color}`}>
+                <motion.div 
+                  className={`mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full ${f.color}`}
+                  whileHover={{ 
+                    scale: 1,
+                    rotate: 10,
+                    transition: { duration: 0.2 }
+                  }}
+                >
                   <Icon className="h-5 w-5" />
-                </div>
+                </motion.div>
                 <h3 className="text-lg font-semibold mb-2 px-1">{f.title}</h3>
                 <p className="text-sm text-gray-600 leading-snug px-1">{f.desc}</p>
               </div>
