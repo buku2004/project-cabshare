@@ -12,7 +12,7 @@ import UserStatus from "../auth/UserStatus";
 import { motion, AnimatePresence } from "motion/react";
 
 const links = [
-  { href: "#", label: "Home" },
+  { href: "/", label: "Home" },
   { href: "/find-ride", label: "Find a Ride" },
   { href: "/post-ride", label: "Post a Ride" },
   { href: "/about", label: "About" },
