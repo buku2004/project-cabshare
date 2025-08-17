@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import "./globals.css";
 import { Josefin_Sans } from "next/font/google";
 import Navbar from "./components/Navbar";
@@ -20,14 +19,20 @@ export const metadata = {
     siteName: "CabShare",
     images: [
       {
-        url: "/og-image.png",
+        url: "/cabshare-logo.png",
         width: 1200,
         height: 630,
         alt: "CabShare Preview",
       },
     ],
     type: "website",
-  }
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CabShare",
+    description: "Save money and share rides with friends!",
+    images: ["/cabshare-logo.png"],
+  },
 };
 
 
