@@ -150,7 +150,8 @@ const PostRide = () => {
               type="text"
               name="email"
               placeholder="e.g, 123@gmail.com"
-              value={formData.pickup}
+              value={formData.email}
+              pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"
               onChange={handleChange}
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-orange-200"
             />
